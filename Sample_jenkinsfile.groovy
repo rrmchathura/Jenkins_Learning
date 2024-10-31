@@ -14,10 +14,11 @@ pipeline {
                     //Clone the git repository master branch
                     def gitRepoUrl = 'https://github.com/rrmchathura/Jenkins_Learning.git'
 
-                    Checkout([$class: 'GitSCM']),
+                    Checkout([$class: 'GitSCM',
                         branches: [[name: '*/main']],
                         userRemoteConfigs: [[url: gitRepoUrl]],
                         extensions: [[$class: 'CleanBeforeCheckout'], [$class:'CloneOption', noTags: false, shallow: true, depth: 1]]
+                        ])
                 }
                 
             }
