@@ -4,7 +4,7 @@ pipeline {
 
     environment{
         // Define environment variabless here
-        My_ENV_VAR = 'some value'
+        My_ENV_VAR = 'custom value'
     }
 
     stages {
@@ -15,7 +15,7 @@ pipeline {
                     def gitRepoUrl = 'https://github.com/rrmchathura/Jenkins_Learning.git'
 
                     Checkout([$class: 'GitSCM']),
-                        branches: [[name: '*/master']],
+                        branches: [[name: '*/main']],
                         userRemoteConfigs: [[url: gitRepoUrl]],
                         extensions: [[$class: 'CleanBeforeCheckout'], [$class:'CloneOption', noTags: false, shallow: true, depth: 1]]
                 }
